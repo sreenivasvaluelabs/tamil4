@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Hello World!</title>
+  </head>
+  <body>
+    <h1>My todos</h1>
+	<ul></ul>
+	
+   <script>
+    const electron = require('electron');
+     const { ipcRenderer } = electron;
+  // document.querySelector('form').addEventListener('submit', (event)=>{
+   //event.preventDefault();
+   //const {value}=document.querySelector('input');
+   ipcRenderer.on('todo:add',(event, todo)=>{
+      const li= document.createElement('li');
+	  const text= document.createTextNode(todo);
+	  li.appenedChild(text);
+	  document.querySelector('ul').appendChild(li);
+	  
+    });
+   
+   
+   
+  });
+   </script>
+  </body>
+</html>
+
